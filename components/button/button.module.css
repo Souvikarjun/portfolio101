@@ -1,0 +1,20 @@
+.components{
+    /* margin: 10px; */
+    padding: 10px;
+    text-transform: lowercase;
+}
+
+
+.button{
+    text-transform: capitalize;
+    color: #d1d1d1;
+    background-color: #0e0e0e;
+    padding: 20px;
+    /* border: none; */
+
+    border-color: #aaaaaa;
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
