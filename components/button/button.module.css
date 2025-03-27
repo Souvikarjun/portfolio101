@@ -1,19 +1,19 @@
 .components{
     /* margin: 10px; */
-    padding: 10px;
+    /* padding: 10px; */
     text-transform: lowercase;
 }
 
 
 .button{
     text-transform: capitalize;
-    color: #d1d1d1;
+    color: #dcdcdc;
     background-color: #0e0e0e;
     padding: 20px;
+    width: 100%;
     /* border: none; */
 
-    border-color: #aaaaaa;
-    border-width: 1px;
+    border: 1px solid #7a7a7a;
     border-radius: 10px;
     font-size: 30px;
     cursor: pointer;

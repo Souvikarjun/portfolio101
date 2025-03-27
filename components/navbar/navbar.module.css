@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    padding: 30px;
+    background-color: #202020;
+    border: #000;
+    opacity: .78;
+    align-items: center;
+    justify-content: space-between;
+    color: #cfcfcf;
+}
+
+.links{
+    text-decoration: none;
+    color: #cfcfcf;
+}
+
+.links:hover{
+    text-decoration: underline;
+    color: #999999;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    list-style-type: none;
+}
+
