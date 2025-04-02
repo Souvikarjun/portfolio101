@@ -1,0 +1,11 @@
+.component{
+    display: flex;
+}
+
+.button{
+    padding: 10px;
+    background-color: #171717;
+    color: #dcdcdc;
+    border: 1px solid #7a7a7a;
+    border-radius: 10px;
+}

@@ -7,7 +7,7 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <div className={styles.container}>
-        <Image src="/public/logo_demo.png" alt="Logo" width={30} height={30}/>
+        <Image src="/public/logo.png" alt="Logo" width={30} height={30} className={styles.img}/>
         <ul className={styles.list}>
             <Link href="#" className={styles.links} >
                 <li className={styles.comp}>Home</li>

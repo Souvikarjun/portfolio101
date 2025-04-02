@@ -1,18 +1,19 @@
 import { ContactButton } from "@/components/contactbutton/contactbutton";
 import styles from "./developer.module.css"
+import { Card } from "@/components/card/card";
 
 const DeveloperPage = () => {
   return (
     <div className={styles.wrapper}>
-        <div>
-            <div>
-                <h1 className={styles.title}>title</h1>
-                <p className={styles.subtitle}>subtitle</p>
+        <div className={styles.header}>
+            <div className={styles.maintitle}>
+                <h1 className={styles.title}>Hello</h1>
+                <h2 className={styles.subtitle}>This is Souvikarjun</h2>
             </div>
-            <ContactButton />
+            {/* <ContactButton /> */}
 
         </div>
-
+        {/* <Card Header="Header" body="this is body"/> */}
 
     </div>
   )
