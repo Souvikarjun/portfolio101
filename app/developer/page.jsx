@@ -10,6 +10,7 @@ const DeveloperPage = () => {
                 <h1 className={styles.title}>Hello</h1>
                 <h2 className={styles.subtitle}>This is Souvikarjun</h2>
             </div>
+            <p>Disclaimer: The project is under development. Please have patience</p>
             {/* <ContactButton /> */}
 
         </div>
