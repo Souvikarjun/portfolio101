@@ -7,8 +7,8 @@ const DeveloperPage = () => {
     <div className={styles.wrapper}>
         <div className={styles.header}>
             <div className={styles.maintitle}>
-                <h1 className={styles.title}>Hello</h1>
-                <h2 className={styles.subtitle}>This is Souvikarjun</h2>
+                <h1 className={`${styles.title} ${styles.anime}`}>Hello</h1>
+                <h1 className={`${styles.subtitle} ${styles.anime}`}>This is Souvikarjun</h1>
             </div>
             <p>Disclaimer: The project is under development. Please have patience</p>
             {/* <ContactButton /> */}
