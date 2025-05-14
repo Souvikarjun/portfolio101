@@ -4,7 +4,7 @@ import styles from "./musician.module.css"
 export default function Layout({ children }) {
     return (
         <div className={styles.container}>
-            <Navbar/>
+            <Navbar mainComp="Developer"/>
           {children}
         </div>
     );

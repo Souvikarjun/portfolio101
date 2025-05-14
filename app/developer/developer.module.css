@@ -27,7 +27,7 @@
 }
 
 .subtitle{
-    font-size: 65px;
+    /* font-size: 65px; */
     background-image: linear-gradient(to bottom right, #131313,#131313,#131313,#131313,#131313,#131313,#131313, #e9e9e9,#131313,#131313,#131313,#131313,#131313,#131313,#131313);
     background-clip: text;
     font-size: 80px;
@@ -39,6 +39,26 @@
 
 }
 
+.subtext{
+    padding-top: 30px;
+    font-size: 40px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ctbtn{
+    margin-top: 50px;
+}
+
+.btn{
+    width: 150px;
+    height: 60px;
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 10px #000000;
+}
 
 .wrapper p{
     color: rgb(0, 0, 0);
