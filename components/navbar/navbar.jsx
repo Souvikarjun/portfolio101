@@ -1,46 +1,18 @@
 // import { Button } from "../button/button";
 import Link from "next/link";
+import Navigation from "./navigation";
 import { ContactButton } from "../contactbutton/contactbutton";
 import styles from "./navbar.module.css"
 import Image from "next/image";
 
+// const menuItem = ["Home", "Skill", "Projects", "About", "Blog", "Reviews"]
+
 const Navbar = ({mainComp}) => {
+    // console.log(menuItem)
   return (
     <div className={styles.container}>
         <Image src="/next.svg" alt="Logo" width={100} height={30} className={styles.img}/>
-        <ul className={styles.list}>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>Home</li>
-                </Link>
-            </div>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>Skill</li>
-                </Link>
-            </div>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>Projects</li>
-                </Link>
-            </div>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>About</li>
-                </Link>
-            </div>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>Blog</li>
-                </Link>
-            </div>
-            <div className={styles.underline}>
-                <Link href="/" className={styles.links} >
-                    <li className={styles.comp}>Reviews</li>
-                </Link>
-            </div>
-
-        </ul>
+        <Navigation/>
         <div className={styles.buttons}> 
             <ContactButton text={mainComp}/>
             <ContactButton text="Contact Me"/>

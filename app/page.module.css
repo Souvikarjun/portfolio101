@@ -1,6 +1,9 @@
-/* .page {
-  
-} */
+.page {
+  background-image: linear-gradient(to bottom right, #ffffff, #726e6e);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
 
 /* @media (prefers-color-scheme: dark) {
   .page {

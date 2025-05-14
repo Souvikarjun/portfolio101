@@ -5,6 +5,9 @@
   --font-Orbitron: Orbitron; */
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,8 +26,6 @@ body {
 
 body {
   /* background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg"); */
-  
-  background-image: linear-gradient(to bottom right, #ffffff, #726e6e);
   background-position: center;
   background-size: cover;
   height: 100vh;

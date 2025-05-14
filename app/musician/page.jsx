@@ -1,3 +1,4 @@
+import Header from "@/components/header/header"
 import styles from "./musician.module.css"
 
 const Musician = () => {
@@ -5,8 +6,7 @@ const Musician = () => {
     <div className={styles.wrapper}>
         <div className={styles.header}>
             <div className={styles.maintitle}>
-                <h1 className={styles.title}>Hello</h1>
-                <h2 className={styles.subtitle}>This is Souvikarjun as Musician</h2>
+                <Header/>
             </div>
             {/* <ContactButton /> */}
 
