@@ -1,34 +1,44 @@
-// import { Button } from "../button/button";
+"use client";
+
 import Link from "next/link";
-import Navigation from "./navigation";
-import { ContactButton } from "../contactbutton/contactbutton";
-import styles from "./navbar.module.css"
-import Image from "next/image";
+import { usePathname } from "next/navigation";
+import styles from "./navbar.module.css";
+import { orbitron } from "../fonts/font";
 
-// const menuItem = ["Home", "Skill", "Projects", "About", "Blog", "Reviews"]
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
-const Navbar = ({mainComp}) => {
-    // console.log(menuItem)
+const Navbar = ({ mainComp }) => {
+  const pathname = usePathname();
+
   return (
-    <div className={styles.container}>
-        <Image src="/next.svg" alt="Logo" width={100} height={30} className={styles.img}/>
-        <Navigation/>
-        <div className={styles.buttons}> 
-            <ContactButton text={mainComp}/>
-            <ContactButton text="Contact Me"/>
-        </div>
+    <aside className={styles.rail}>
+      <p className={`${styles.brand} ${orbitron.className}`}>OBSERVATIONAL_OS</p>
 
-    </div>
-  )
-}
+      <nav className={styles.nav}>
+        {navItems.map((item) => (
+          <a key={item.label} href={item.href} className={styles.link}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div className={styles.footer}>
+        <p className={styles.signal}>SYNC STATUS: ACTIVE</p>
+        <Link
+          href={pathname === "/developer" ? "/musician" : "/developer"}
+          className={`${styles.switch} ${orbitron.className}`}
+        >
+          {mainComp}
+        </Link>
+      </div>
+    </aside>
+  );
+};
 
 export default Navbar;
-
-const scroll = (el) => {
-  const scroll = document.querySelector(el)
-  window.addEventListener('scroll', ()=>{
-    if (window.scrollY > 30) {
-        scroll.classList.add()
-    }
-  })
-}

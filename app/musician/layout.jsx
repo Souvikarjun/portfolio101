@@ -1,11 +1,11 @@
 import Navbar from "@/components/navbar/navbar";
-import styles from "./musician.module.css"
+import styles from "./musician.module.css";
 
 export default function Layout({ children }) {
-    return (
-        <div className={styles.container}>
-            <Navbar mainComp="Developer"/>
-          {children}
-        </div>
-    );
-  }
+  return (
+    <div className={styles.container}>
+      <Navbar mainComp="Switch to Dev" />
+      {children}
+    </div>
+  );
+}
