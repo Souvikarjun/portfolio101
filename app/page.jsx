@@ -26,13 +26,15 @@ export default function Home() {
       <div className={styles.orb} />
       <main className={styles.main}>
         <p className={`${styles.kicker} ${orbitron.className}`}>SYSTEM INITIALIZATION</p>
-        <h1 className={`${styles.title} ${inter.className}`}>
-          Build in <span>high fidelity</span>.
-          <br />
-          Perform in <span>deep emotion</span>.
+        <h1 className={`${styles.pretitle} ${inter.className}`}>
+           This is 
         </h1>
+        <h1 className={`${styles.title} ${inter.className}`}>
+           <span>Souvikarjun Deb</span>.
+        </h1>
+          <br />
         <p className={styles.subtitle}>
-          Select a mode to enter the upgraded portfolio experience.
+          Select a Portfolio to view
         </p>
 
         <section className={styles.grid}>
