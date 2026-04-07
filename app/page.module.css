@@ -2,20 +2,20 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, #0d2f5d 0%, #050916 35%, #03040b 100%);
+  /* background-image: radial-gradient(circle at 20% 20%, #0d2f5d 0%, #050916 35%, #03040b 100%); */
   color: #f5f7ff;
 }
 
 .noise {
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
+  /* background-image: repeating-linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.04) 0,
     rgba(255, 255, 255, 0.04) 1px,
     transparent 1px,
     transparent 3px
-  );
+  ); */
   opacity: 0.12;
   pointer-events: none;
   animation: scan 9s linear infinite;
@@ -28,7 +28,7 @@
   top: -12vw;
   right: -10vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(21, 154, 255, 0.45) 0%, rgba(3, 8, 20, 0) 68%);
+  /* background: radial-gradient(circle, rgba(21, 154, 255, 0.45) 0%, rgba(3, 8, 20, 0) 68%); */
   filter: blur(10px);
   animation: breathe 7s ease-in-out infinite;
 }
@@ -66,7 +66,7 @@
   font-size: clamp(2.2rem, 7vw, 5.2rem);
   line-height: 1.05;
   letter-spacing: 0.05em;
-  animation: typing 3.5s steps(40,end) 3.5s  backwards, blink-caret 1s step-end infinite;
+  animation: typing 7s steps(40,end) 3.5s  backwards infinite, blink-caret 1s step-end infinite;
   max-width: 14ch;
   white-space: nowrap;
   overflow: hidden;
@@ -183,8 +183,14 @@
   0% {
     width: 0;
   }
-  100% {
+  50% {
     width: 100%;
+  }
+  75% {
+    width: 0;
+  }
+  100% {
+    width: 0;
   }
 }
 

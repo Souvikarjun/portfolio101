@@ -26,6 +26,10 @@ body {
 
 body {
   /* background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg"); */
+  background-image: url("https://i.postimg.cc/Vvmt9PSf/dramatic-spotlight-dark-concrete-background.jpg"),
+    linear-gradient(#033575 0%, #072c99 35%, #09156d 100%);
+  /* background-color: radial-gradient(circle at 20% 20%, #0d2f5d 0%, #050916 35%, #03040b 100%); */
+  background-blend-mode: overlay;
   background-position: center;
   background-size: cover;
   height: 100vh;
