@@ -1,8 +1,6 @@
 import { inter } from "@/components/fonts/font";
+import MusicPlayer from "@/components/MusicPlayer";
 import "./globals.css";
-// import styles from "./global.css"
-// import { Inter } from 'next/font/google' 
-
 
 export const metadata = {
   title: "Create Next App",
@@ -12,8 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={inter.className}>
         {children}
+        <MusicPlayer />
       </body>
     </html>
   );
