@@ -93,6 +93,8 @@
 }
 
 .card {
+  position: relative;
+  isolation: isolate;
   text-decoration: none;
   color: inherit;
   padding: 1.5rem;
@@ -101,35 +103,72 @@
   background: linear-gradient(140deg, rgba(11, 20, 45, 0.82), rgba(6, 11, 30, 0.72));
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 40px rgba(2, 8, 28, 0.45);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-  animation: rise 0.9s ease both;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease,
+    box-shadow 0.45s ease, background-color 0.35s ease;
+  animation: cardEntrance 0.9s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 .card:nth-child(2) {
-  animation-delay: 0.12s;
+  animation-delay: 0.18s;
+}
+
+.cardGlow {
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle at 10% 15%, rgba(120, 180, 255, 0.28), rgba(120, 180, 255, 0) 42%),
+    radial-gradient(circle at 85% 80%, rgba(112, 236, 255, 0.22), rgba(112, 236, 255, 0) 44%);
+  opacity: 0.6;
+  transform: scale(0.98);
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.01);
   border-color: rgba(140, 218, 255, 0.75);
   box-shadow: 0 26px 54px rgba(3, 25, 67, 0.58);
+}
+
+.card:hover .cardGlow,
+.card:focus-visible .cardGlow {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.card:focus-visible {
+  outline: 2px solid rgba(149, 219, 255, 0.9);
+  outline-offset: 4px;
 }
 
 .cardTag {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   color: #59d7ff;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: textSlide 0.5s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .card h2 {
   margin-top: 0.8rem;
   font-size: 2rem;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: textSlide 0.55s ease forwards;
+  animation-delay: 0.28s;
 }
 
-.card p {
+.card > p:not(.cardTag) {
   margin-top: 0.8rem;
   color: #cad6f7;
   line-height: 1.55;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: textSlide 0.55s ease forwards;
+  animation-delay: 0.36s;
 }
 
 .enter {
@@ -137,16 +176,53 @@
   display: inline-block;
   color: #98b8ff;
   font-weight: 600;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: textSlide 0.55s ease forwards;
+  animation-delay: 0.44s;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 
-@keyframes rise {
+.enter span {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.card:hover .enter,
+.card:focus-visible .enter {
+  color: #d2e2ff;
+  letter-spacing: 0.02em;
+}
+
+.card:hover .enter span,
+.card:focus-visible .enter span {
+  transform: translateX(4px);
+}
+
+.card:nth-child(2) .cardTag {
+  animation-delay: 0.34s;
+}
+
+.card:nth-child(2) h2 {
+  animation-delay: 0.42s;
+}
+
+.card:nth-child(2) > p:not(.cardTag) {
+  animation-delay: 0.5s;
+}
+
+.card:nth-child(2) .enter {
+  animation-delay: 0.58s;
+}
+
+@keyframes cardEntrance {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -169,6 +245,17 @@
   }
 }
 
+@keyframes textSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 900px) {
   .main {
     padding-top: 5.8rem;
@@ -176,6 +263,22 @@
 
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kicker,
+  .pretitle,
+  .title,
+  .card,
+  .cardTag,
+  .card h2,
+  .card > p:not(.cardTag),
+  .enter,
+  .noise,
+  .orb {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

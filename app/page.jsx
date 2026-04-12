@@ -6,16 +6,18 @@ const modes = [
   {
     title: "Developer",
     route: "/developer",
-    tag: "Protocol 01",
+    tag: "Build with me",
     description:
-      "Explore interface systems, machine intelligence projects, and observational architecture notes.",
+      "Dive into practical projects, code walkthroughs, and the systems I am building one step at a time.",
+    cta: "Explore projects",
   },
   {
     title: "Musician",
     route: "/musician",
-    tag: "Protocol 02",
+    tag: "Listen with me",
     description:
-      "Step into cinematic sound design, live experiments, and narrative audio worldbuilding.",
+      "Step into cinematic sound design, live sessions, and the stories I tell through sound.",
+    cta: "Hear the work",
   },
 ];
 
@@ -40,10 +42,14 @@ export default function Home() {
         <section className={styles.grid}>
           {modes.map((mode) => (
             <Link key={mode.title} href={mode.route} className={styles.card}>
+              <span className={styles.cardGlow} aria-hidden />
               <p className={`${styles.cardTag} ${orbitron.className}`}>{mode.tag}</p>
               <h2>{mode.title}</h2>
               <p>{mode.description}</p>
-              <span className={styles.enter}>Enter Node</span>
+              <span className={styles.enter}>
+                {mode.cta}
+                <span aria-hidden> {"->"}</span>
+              </span>
             </Link>
           ))}
         </section>
