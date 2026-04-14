@@ -101,6 +101,17 @@ export default function MusicPlayer() {
   const isPlayingRef = useRef(false);
   const skipNextIndexEffectRef = useRef(false);
 
+  const persistState = () => {
+    if (typeof window === "undefined") return;
+    if (!audioRef.current) return;
+    const payload = {
+      songIndex: activeIndexRef.current,
+      currentTime: audioRef.current.currentTime || 0,
+      isPlaying: isPlayingRef.current,
+    };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  };
+
   useEffect(() => {
     activeIndexRef.current = currentIndex;
   }, [currentIndex]);
@@ -140,7 +151,7 @@ export default function MusicPlayer() {
       ? Math.min(Math.max(savedState.songIndex, 0), songs.length - 1)
       : 0;
     const initialTime = savedState ? Math.max(savedState.currentTime, 0) : 0;
-    const shouldAutoplay = savedState ? savedState.isPlaying : false;
+    const shouldAutoplay = savedState ? savedState.isPlaying : true;
 
     activeIndexRef.current = initialIndex;
     skipNextIndexEffectRef.current = true;
@@ -148,20 +159,10 @@ export default function MusicPlayer() {
     setCurrentTime(initialTime);
     setIsPlaying(shouldAutoplay);
 
-    const saveSnapshot = () => {
-      if (typeof window === "undefined") return;
-      const payload = {
-        songIndex: activeIndexRef.current,
-        currentTime: audio.currentTime || 0,
-        isPlaying: isPlayingRef.current,
-      };
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    };
-
     const onTimeUpdate = () => {
       setCurrentTime(audio.currentTime || 0);
       setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
-      saveSnapshot();
+      persistState();
     };
 
     const onLoadedMetadata = () => {
@@ -177,7 +178,29 @@ export default function MusicPlayer() {
         audio
           .play()
           .then(() => setIsPlaying(true))
-          .catch(() => setIsPlaying(false));
+          .catch(() => {
+            setIsPlaying(false);
+
+            const resumeOnInteraction = async () => {
+              try {
+                await audio.play();
+                setIsPlaying(true);
+                persistState();
+              } catch {
+                setIsPlaying(false);
+              } finally {
+                window.removeEventListener("click", resumeOnInteraction);
+                window.removeEventListener("keydown", resumeOnInteraction);
+                window.removeEventListener("touchstart", resumeOnInteraction);
+              }
+            };
+
+            if (typeof window !== "undefined") {
+              window.addEventListener("click", resumeOnInteraction, { once: true });
+              window.addEventListener("keydown", resumeOnInteraction, { once: true });
+              window.addEventListener("touchstart", resumeOnInteraction, { once: true });
+            }
+          });
       }
     };
 
@@ -187,7 +210,7 @@ export default function MusicPlayer() {
     };
 
     const onBeforeUnload = () => {
-      saveSnapshot();
+      persistState();
     };
 
     audio.addEventListener("timeupdate", onTimeUpdate);
@@ -248,24 +271,32 @@ export default function MusicPlayer() {
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
+      isPlayingRef.current = false;
+      persistState();
       return;
     }
 
     try {
       await audio.play();
       setIsPlaying(true);
+      isPlayingRef.current = true;
       setLoadError("");
+      persistState();
     } catch {
       setIsPlaying(false);
+      isPlayingRef.current = false;
+      persistState();
     }
   };
 
   const playPrev = () => {
     setCurrentIndex((prev) => (prev - 1 + songs.length) % songs.length);
+    persistState();
   };
 
   const playNext = () => {
     setCurrentIndex((prev) => (prev + 1) % songs.length);
+    persistState();
   };
 
   const onSeek = (event) => {
