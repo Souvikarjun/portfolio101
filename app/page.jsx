@@ -1,59 +1,74 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { orbitron, inter } from "@/components/fonts/font";
-
-const modes = [
-  {
-    title: "Developer",
-    route: "/developer",
-    tag: "Build with me",
-    description:
-      "Dive into practical projects, code walkthroughs, and the systems I am building one step at a time.",
-    cta: "Explore projects",
-  },
-  {
-    title: "Musician",
-    route: "/musician",
-    tag: "Listen with me",
-    description:
-      "Step into cinematic sound design, live sessions, and the stories I tell through sound.",
-    cta: "Hear the work",
-  },
-];
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <div className={styles.noise} />
-      <div className={styles.orb} />
       <main className={styles.main}>
-        <p className={`${styles.kicker} ${orbitron.className}`}>SYSTEM INITIALIZATION</p>
-        <h1 className={`${styles.pretitle} ${inter.className}`}>
-           This is 
-        </h1>
-        <h1 className={`${styles.title} ${inter.className}`}>
-           <span>Souvikarjun Deb</span>.
-        </h1>
-          <br />
-        <p className={styles.subtitle}>
-          Select a Portfolio to view
-        </p>
+        <div className={styles.heroWrapper}>
+          <div className={styles.heroContent}>
+            <p className={`${styles.kicker} ${orbitron.className}`}>
+              PORTFOLIO VOL. 01
+            </p>
+            <h1 className={styles.title}>
+              DEVELOPER <br />
+              <span className={styles.ampersand}>&</span><br />
+              <span className={styles.musician}>MUSICIAN</span>
+            </h1>
+            
+            <p className={styles.subtitle}>
+              Architecting digital ecosystems with technical precision while exploring
+              the rhythmic boundaries of cinematic soundscapes. A dualistic approach to
+              creative engineering.
+            </p>
 
-        <section className={styles.grid}>
-          {modes.map((mode) => (
-            <Link key={mode.title} href={mode.route} className={styles.card}>
-              <span className={styles.cardGlow} aria-hidden />
-              <p className={`${styles.cardTag} ${orbitron.className}`}>{mode.tag}</p>
-              <h2>{mode.title}</h2>
-              <p>{mode.description}</p>
-              <span className={styles.enter}>
-                {mode.cta}
-                <span aria-hidden> {"->"}</span>
-              </span>
-            </Link>
-          ))}
+            <div className={styles.ctaGroup}>
+              <Link href="/developer" className={styles.ctaPrimary}>
+                VIEW DEVELOPER WORK ↗
+              </Link>
+              <Link href="/musician" className={styles.ctaSecondary}>
+                EXPLORE MUSIC ▶
+              </Link>
+            </div>
+          </div>
+
+          <div className={styles.infoCards}>
+            <div className={styles.card}>
+              <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
+              <ul className={styles.stackList}>
+                <li>Rust / TypeScript</li>
+                <li>Distributed Systems</li>
+                <li>Low-latency Architecture</li>
+              </ul>
+            </div>
+
+            <div className={styles.card}>
+              <p className={`${styles.cardLabel} ${orbitron.className}`}>LATEST RELEASE</p>
+              <div className={styles.release}>
+                <div className={styles.waveform}>||||||||||||||||||</div>
+                <div>
+                  <h4>VOID_STRUCTURE</h4>
+                  <p>AMBIENT / INDUSTRIAL</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section className={styles.heroImageSection}>
+          <div className={styles.heroImageText}>
+            <h2>
+              SYNTHESIZING <br />
+              LOGIC & <br />
+              FREQUENCY.
+            </h2>
+          </div>
         </section>
       </main>
+      
+      <Contact />
     </div>
   );
 }

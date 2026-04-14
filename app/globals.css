@@ -1,43 +1,45 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  /* --font-inter: Inter;
-  --font-Orbitron: Orbitron; */
+  --background: #0f1014;
+  --foreground: #f4f4f4;
+  --accent-light: #b9c1fb;
+  --accent-primary: #a1aeff;
+  --accent-secondary: #ffb176;
+  --panel-bg: #16171b;
+  --border-color: #27282e;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
 body {
   max-width: 100vw;
-  font-family: var(--font-inter);
-  /* overflow-x: hidden; */
-  font-weight: 200;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-body {
-  /* background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg"); */
-  background-image: url("https://i.postimg.cc/Vvmt9PSf/dramatic-spotlight-dark-concrete-background.jpg"),
-    linear-gradient(#033575 0%, #072c99 35%, #09156d 100%);
-  /* background-color: radial-gradient(circle at 20% 20%, #0d2f5d 0%, #050916 35%, #03040b 100%); */
-  background-blend-mode: overlay;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 * {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }

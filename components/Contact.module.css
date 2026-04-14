@@ -1,0 +1,181 @@
+.section {
+  padding: 6rem 4rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.kicker {
+  color: var(--accent-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kickerGray {
+  color: #666;
+  margin-top: 2rem;
+}
+
+.bio {
+  font-size: 1.1rem;
+  color: #aaa;
+  max-width: 400px;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: -1rem;
+}
+
+.links a {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--accent-light);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.specsBox {
+  background-color: var(--panel-bg);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.specsTitle {
+  color: var(--accent-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.specsBox p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--panel-bg);
+  padding: 3rem;
+  border-radius: 4px;
+}
+
+.fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legend {
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 0.1em;
+}
+
+.input,
+.textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--foreground);
+  padding: 0.5rem 0;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-bottom-color: var(--accent-primary);
+}
+
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.submitBtn {
+  background-color: var(--accent-light);
+  color: #000;
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: 1rem;
+  font-weight: 900;
+  text-align: left;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitBtn:hover {
+  background-color: var(--accent-primary);
+}
+
+.meta {
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  max-width: 80px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .form {
+    padding: 2rem;
+  }
+}

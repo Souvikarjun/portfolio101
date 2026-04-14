@@ -1,130 +1,89 @@
 import { orbitron } from "@/components/fonts/font";
 import styles from "./developer.module.css";
+import Contact from "@/components/Contact";
+import Link from "next/link";
 
 const projects = [
   {
-    tag: "Machine Learning",
-    title: "Digit Recognizer",
-    copy: "Real-time handwritten inference pipeline tuned for low-latency edge delivery.",
-    metric: "98.2% accuracy",
+    tag: "PYTHON  TENSORFLOW  CUSTOM CUDA KERNELS",
+    title: "CHESS CNN",
+    copy: "Deep learning model for move prediction and board state evaluation. Optimized using custom CUDA kernels for real-time inference during grandmaster-level play.",
+    link: "VIEW PROJECT",
   },
   {
-    tag: "Systems Research",
-    title: "Sharebite Logistics",
-    copy: "Route orchestration engine for fast dispatch and live state correction.",
-    metric: "1.3s sync cycle",
+    tag: "RUST  WASM  TAURI",
+    title: "NOTIQUE",
+    copy: "A minimalist, local-first markdown editor with end-to-end encrypted cloud sync and custom plugin architectures.",
+    link: "VIEW PROJECT",
   },
   {
-    tag: "Interface Ops",
-    title: "Neural Control Deck",
-    copy: "An interaction layer where dense data remains calm, readable, and human.",
-    metric: "42 active modules",
+    tag: "GO  WEBSOCKETS",
+    title: "WEBRTC CORE",
+    copy: "P2P signaling infrastructure for high-concurrency video streaming.",
+    link: "VIEW PROJECT",
   },
-];
-
-const notes = [
-  "[14:02:11] initializing sync mode: ok",
-  "[14:05:22] event collapse resolved in node_07",
-  "[14:08:19] recording observation pre-locality stream",
-  "[14:12:01] re-calibration complete",
-  "[14:15:33] awaiting command",
+  {
+    tag: "C++  RUST",
+    title: "SHAREBITE",
+    copy: "Ephemeral file sharing protocol utilizing temporary keys and auto-destructing server nodes. Built for extreme privacy.",
+    link: "VIEW PROJECT",
+  },
 ];
 
 export default function DeveloperPage() {
   return (
-    <section className={styles.page}>
-      <div className={styles.noise} />
-      <div className={styles.gridBackdrop} />
-
-      <section id="home" className={styles.hero}>
-        <div>
-          <p className={`${styles.kicker} ${orbitron.className}`}>PROTOCOL 01: CORE ARCHITECTURE</p>
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <div className={styles.heroSection}>
+          <p className={`${styles.kicker} ${orbitron.className}`}>ENGINEERING SYSTEMS</p>
           <h1 className={styles.title}>
-            Identity & <br />
-            Protocol
+            ARCHITECTING <br />
+            DIGITAL <br />
+            <span className={styles.highlight}>STRUCTURES</span>
           </h1>
           <p className={styles.lead}>
-            Designing interfaces at the intersection of logical precision and atmospheric emotion.
-            Systems should not only function, they should resonate.
+            I build high-performance distributed systems and cryptographic primitives. Focused on the intersection of low-level optimization and seamless user experience.
           </p>
-          <a href="#projects" className={styles.cta}>
-            Initiate Node Review
-          </a>
+
+          <div className={styles.tagsRow}>
+            <span className={styles.tag}>RUST</span>
+            <span className={styles.tag}>REACT</span>
+            <span className={styles.tag}>WEBGL</span>
+            <span className={styles.tag}>KAFKA</span>
+          </div>
         </div>
 
-        <aside className={styles.statusCard}>
-          <p className={`${styles.cardLabel} ${orbitron.className}`}>Registry_ID</p>
-          <h3>Curator_v3.0</h3>
-          <div className={styles.stack}>
-            <span>Next.js core</span>
-            <span>UI systems</span>
-            <span>ML tooling</span>
-            <span>Research ops</span>
-          </div>
-          <div className={styles.metrics}>
-            <p>
-              Cognitive Load <strong>optimized</strong>
-            </p>
-            <p>
-              Runtime Efficiency <strong>high</strong>
-            </p>
-            <p>
-              Interface Elegance <strong>stable</strong>
-            </p>
-          </div>
-        </aside>
-      </section>
-
-      <section id="projects" className={styles.section}>
-        <div className={styles.sectionHead}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>ACTIVE MODULES</p>
-          <h2>Project Index</h2>
-        </div>
-
-        <div className={styles.cardGrid}>
-          {projects.map((project) => (
+        <section className={styles.projectsGrid}>
+          {projects.map((project, idx) => (
             <article key={project.title} className={styles.projectCard}>
-              <p className={`${styles.projectTag} ${orbitron.className}`}>{project.tag}</p>
-              <h3>{project.title}</h3>
-              <p>{project.copy}</p>
-              <span>{project.metric}</span>
+              <div className={styles.cardImageHolder} style={{backgroundImage: `url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')`}}></div>
+              <div className={styles.cardContent}>
+                <div className={styles.cardHeaderRow}>
+                  <h3>{project.title}</h3>
+                  <div className={styles.iconHole}></div>
+                </div>
+                <p className={styles.projectCopy}>{project.copy}</p>
+                <div className={styles.cardFooter}>
+                  <p className={styles.projectTech}>{project.tag}</p>
+                  <Link href="#" className={styles.projectLink}>{project.link} ↗</Link>
+                </div>
+              </div>
             </article>
           ))}
-        </div>
-      </section>
+        </section>
 
-      <section id="research" className={styles.research}>
-        <article className={styles.logCard}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>LAB_JOURNAL_V4</p>
-          <h3>Observation Stream</h3>
-          <ul>
-            {notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        </article>
+        <section className={styles.ctaSection}>
+          <h2 className={styles.ctaTitle}>
+            READY TO <br /> INITIATE?
+          </h2>
+          <div className={styles.ctaButtons}>
+            <Link href="#contact" className={styles.btnPrimary}>START PROJECT</Link>
+            <Link href="#" className={styles.btnSecondary}>VIEW GITHUB</Link>
+          </div>
+        </section>
 
-        <article className={styles.spotlight}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>SYSTEM_VISUAL_84</p>
-          <h3>Deep Field Visualization</h3>
-          <p>
-            Mapping how interface decisions influence cognition across complex systems and research tools.
-          </p>
-        </article>
-      </section>
-
-      <section id="about" className={styles.about}>
-        <h2>About this direction</h2>
-        <p>
-          This redesign shifts the portfolio into an OS-like narrative: command rail, protocol language,
-          layered cards, and cinematic gradients with responsive motion.
-        </p>
-      </section>
-
-      <section id="contact" className={styles.contact}>
-        <h2>Ready for collaboration?</h2>
-        <a href="mailto:hello@souvik.dev">hello@souvik.dev</a>
-      </section>
-    </section>
+      </main>
+      <Contact />
+    </div>
   );
 }
