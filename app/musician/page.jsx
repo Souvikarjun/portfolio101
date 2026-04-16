@@ -1,121 +1,137 @@
-import { orbitron } from "@/components/fonts/font";
+"use client";
+
+import { useState } from "react";
 import styles from "./musician.module.css";
 
-const sets = [
+const bandInfo = {
+  name: "The Crashratts",
+  role: "Vocalist, Guitar, Creative Direction",
+  experience: "Live sets, writing sessions, arrangement, and performance development.",
+  summary:
+    "The Crashratts blends emotive songwriting with energetic stage performance, balancing melodic hooks with raw live dynamics.",
+};
+
+const gallery = [
   {
-    tag: "Live System",
-    title: "Neural Drift Session",
-    copy: "A spatial performance weaving analog textures with reactive synthesis.",
-    metric: "72 min runtime",
+    id: 1,
+    title: "Live Performance",
+    src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    tag: "Composition Lab",
-    title: "Quantum Horizon Score",
-    copy: "Cinematic motif suite for non-linear storytelling and scene transitions.",
-    metric: "14 cue families",
+    id: 2,
+    title: "Studio Session",
+    src: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    tag: "Audio Tools",
-    title: "Pulse Mapper",
-    copy: "Tempo-aware modulation framework for expressive motion in sound.",
-    metric: "2.8ms latency",
+    id: 3,
+    title: "Backstage Moment",
+    src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 4,
+    title: "Soundcheck",
+    src: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 5,
+    title: "Crowd Energy",
+    src: "https://images.unsplash.com/photo-1464375117522-1311dd6d3b31?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 6,
+    title: "Writing Room",
+    src: "https://images.unsplash.com/photo-1461784121038-f088ca1e7714?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
-const cues = [
-  "[22:10:03] harmonic lattice calibrated",
-  "[22:12:17] transients locked to visual feed",
-  "[22:16:58] low-end diffusion stabilized",
-  "[22:20:44] atmospheric layer opened",
-  "[22:24:10] sequence ready for launch",
-];
+const spotifyEmbed = "https://open.spotify.com/embed/artist/4gzpq5DPGxSnKTe4SA8HAU?utm_source=generator";
 
 export default function MusicianPage() {
-  return (
-    <section className={styles.page}>
-      <div className={styles.noise} />
-      <div className={styles.waves} />
+  const [activeImage, setActiveImage] = useState(null);
 
+  return (
+    <div className={styles.pageWrap}>
       <section id="home" className={styles.hero}>
-        <div>
-          <p className={`${styles.kicker} ${orbitron.className}`}>SONIC PROTOCOL / 02</p>
-          <h1 className={styles.title}>
-            The Quantum <br />
-            Horizon
-          </h1>
-          <p className={styles.lead}>
-            Building immersive music systems where each frequency behaves like a living interface.
-            Every composition is a designed environment.
-          </p>
-          <a href="#projects" className={styles.cta}>
-            Begin Exploration
+        <p className={styles.kicker}>Musician Mode</p>
+        <h1>Writing atmosphere-forward music for stages, stories, and cinematic spaces.</h1>
+        <p>
+          I approach sound as emotional architecture. The goal is depth with clarity, blending
+          composition, performance, and visuals into one immersive experience.
+        </p>
+        <div className={styles.socialRow}>
+          <a href="https://www.instagram.com/souvikarjun_deb" target="_blank" rel="noreferrer">
+            Instagram: @souvikarjun_deb
+          </a>
+          <a href="https://www.facebook.com/souvikarjundeb" target="_blank" rel="noreferrer">
+            Facebook: souvikarjundeb
           </a>
         </div>
-
-        <aside className={styles.statusCard}>
-          <p className={`${styles.cardLabel} ${orbitron.className}`}>SESSION METRICS</p>
-          <h3>Waveform Analysis</h3>
-          <div className={styles.bars}>
-            <p>Stability</p>
-            <div><span style={{ width: "96%" }} /></div>
-            <p>Dynamic Range</p>
-            <div><span style={{ width: "88%" }} /></div>
-            <p>Resonance Depth</p>
-            <div><span style={{ width: "91%" }} /></div>
-          </div>
-        </aside>
       </section>
 
-      <section id="projects" className={styles.section}>
+      <section id="bands" className={styles.section}>
         <div className={styles.sectionHead}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>ACTIVE SETS</p>
-          <h2>Performance Index</h2>
+          <p className={styles.kicker}>Bands & Work</p>
+          <h2>{bandInfo.name}</h2>
         </div>
-        <div className={styles.cardGrid}>
-          {sets.map((set) => (
-            <article key={set.title} className={styles.projectCard}>
-              <p className={`${styles.projectTag} ${orbitron.className}`}>{set.tag}</p>
-              <h3>{set.title}</h3>
-              <p>{set.copy}</p>
-              <span>{set.metric}</span>
-            </article>
+
+        <article className={styles.bandCard}>
+          <p>{bandInfo.summary}</p>
+          <div className={styles.bandMeta}>
+            <span>
+              <strong>Role</strong>
+              {bandInfo.role}
+            </span>
+            <span>
+              <strong>Experience</strong>
+              {bandInfo.experience}
+            </span>
+          </div>
+        </article>
+      </section>
+
+      <section id="media" className={styles.section}>
+        <div className={styles.sectionHead}>
+          <p className={styles.kicker}>Media / Gallery</p>
+          <h2>Visual Moments</h2>
+        </div>
+
+        <div className={styles.mediaGrid}>
+          {gallery.map((item) => (
+            <button key={item.id} type="button" className={styles.mediaCard} onClick={() => setActiveImage(item)}>
+              <img src={item.src} alt={item.title} loading="lazy" />
+              <span>{item.title}</span>
+            </button>
           ))}
         </div>
       </section>
 
-      <section id="research" className={styles.research}>
-        <article className={styles.logCard}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>LAB_LOG_SONIC_V2</p>
-          <h3>Session Feed</h3>
-          <ul>
-            {cues.map((cue) => (
-              <li key={cue}>{cue}</li>
-            ))}
-          </ul>
-        </article>
+      <section id="streaming" className={styles.section}>
+        <div className={styles.sectionHead}>
+          <p className={styles.kicker}>Music / Streaming</p>
+          <h2>Spotify</h2>
+        </div>
 
-        <article className={styles.spotlight}>
-          <p className={`${styles.kicker} ${orbitron.className}`}>IMMERSIVE VISUAL NODE</p>
-          <h3>Atmospheric Interface Score</h3>
-          <p>
-            Pairing cinematic synthesis with visual rhythm systems for installations, short films, and live
-            interactive events.
-          </p>
-        </article>
+        <div className={styles.spotifyCard}>
+          <iframe
+            title="Spotify Artist Profile"
+            src={spotifyEmbed}
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        </div>
       </section>
 
-      <section id="about" className={styles.about}>
-        <h2>Sound Direction</h2>
-        <p>
-          This mode translates your portfolio identity into a music-first language: structured telemetry,
-          kinetic gradients, and expressive typography built for narrative audio.
-        </p>
-      </section>
-
-      <section id="contact" className={styles.contact}>
-        <h2>Book a sonic collaboration</h2>
-        <a href="mailto:hello@souvik.dev">hello@souvik.dev</a>
-      </section>
-    </section>
+      {activeImage ? (
+        <button type="button" className={styles.lightbox} onClick={() => setActiveImage(null)}>
+          <div className={styles.lightboxInner}>
+            <img src={activeImage.src} alt={activeImage.title} />
+            <p>{activeImage.title}</p>
+          </div>
+        </button>
+      ) : null}
+    </div>
   );
 }

@@ -1,11 +1,5 @@
-import Navbar from "@/components/navbar/navbar";
-import styles from "./developer.module.css";
+import ModeShell from "@/components/portfolio-shell/mode-shell";
 
 export default function Layout({ children }) {
-  return (
-    <div className={styles.container}>
-      <Navbar mainComp="Switch to Music" />
-      {children}
-    </div>
-  );
+  return <ModeShell mode="developer">{children}</ModeShell>;
 }
