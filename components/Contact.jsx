@@ -43,7 +43,7 @@ export default function Contact() {
             <fieldset className={styles.fieldset}>
               <legend className={`${styles.legend} ${orbitron.className}`}>DIGITAL ADDRESS</legend>
               <input type="email" placeholder="EMAIL ADDRESS" className={styles.input} />
-            </fieldset>
+            </fieldset>si
 
             <fieldset className={styles.fieldset}>
               <legend className={`${styles.legend} ${orbitron.className}`}>THE NARRATIVE</legend>

@@ -10,71 +10,36 @@ const songs = [
     title: "C418 - Subwoofer Lullaby",
     artist: "C418",
     src: "/music/01-subwoofer-lullaby.mp3",
-    color: "#e94560",
+    colors: { primary: "#a1aeff", secondary: "#ffb176", light: "#b9c1fb" },
   },
   {
     id: 2,
     title: "C418 - Living Mice",
     artist: "C418",
     src: "/music/02-living-mice.mp3",
-    color: "#0f3460",
+    colors: { primary: "#e94560", secondary: "#ff9aa8", light: "#ffb176" },
   },
   {
     id: 3,
     title: "C418 - Clark",
     artist: "C418",
     src: "/music/03-clark.mp3",
-    color: "#533483",
+    colors: { primary: "#31a2ac", secondary: "#6df0ff", light: "#a3f3ff" },
   },
-  // {
-  //   id: 4,
-  //   title: "Lena Raine - Chrysopoeia (Slowed & Reverb)",
-  //   artist: "Slowed & RE:versal",
-  //   src: "/music/04-chrysopoeia.mp3",
-  //   color: "#16213e",
-  // },
-  // {
-  //   id: 5,
-  //   title: "C418 - Oxygene",
-  //   artist: "C418",
-  //   src: "/music/05-oxygene.mp3",
-  //   color: "#ff7f50",
-  // },
-  // {
-  //   id: 6,
-  //   title: "C418 - Wet Hands",
-  //   artist: "C418",
-  //   src: "/music/06-wet-hands.mp3",
-  //   color: "#31a2ac",
-  // },
-  // {
-  //   id: 7,
-  //   title: "C418 - Key",
-  //   artist: "C418",
-  //   src: "/music/07-key.mp3",
-  //   color: "#224870",
-  // },
-  // {
-  //   id: 8,
-  //   title: "C418 - Moog City 2",
-  //   artist: "C418",
-  //   src: "/music/08-moog-city-2.mp3",
-  //   color: "#7d53de",
-  // },
-  // {
-  //   id: 9,
-  //   title: "C418 - Danny",
-  //   artist: "C418",
-  //   src: "/music/09-danny.mp3",
-  //   color: "#a11f43",
-  // },
-  // {
-  //   id: 10,
-  //   title: "Minecraft Theme Music 1 Of 3 OST",
-  //   artist: "c0rvus",
-  //   src: "/music/10-minecraft-theme.mp3",
-  //   color: "#f27d42",
-  // },
+  {
+    id: 4,
+    title: "C418 - Oxygene",
+    artist: "C418",
+    src: "/music/05-oxygene.mp3",
+    colors: { primary: "#ff7f50", secondary: "#ffd676", light: "#ffcbbb" },
+  },
+  {
+    id: 5,
+    title: "C418 - Wet Hands",
+    artist: "C418",
+    src: "/music/06-wet-hands.mp3",
+    colors: { primary: "#7d53de", secondary: "#b088ff", light: "#cbb3ff" },
+  },
 ];
 
 function formatTime(time) {
@@ -264,6 +229,17 @@ export default function MusicPlayer() {
     }
   }, [currentIndex]);
 
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const s = songs[currentIndex];
+      if (s && s.colors) {
+        document.documentElement.style.setProperty("--accent-primary", s.colors.primary);
+        document.documentElement.style.setProperty("--accent-secondary", s.colors.secondary);
+        document.documentElement.style.setProperty("--accent-light", s.colors.light);
+      }
+    }
+  }, [currentIndex]);
+
   const togglePlayPause = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -328,7 +304,7 @@ export default function MusicPlayer() {
     <>
       <div className={`playerPopup ${isOpen ? "open" : ""}`}>
         <div className="headerRow">
-          <div className="thumbnail" style={{ background: currentSong.color }} />
+          <div className="thumbnail" style={{ background: currentSong.colors.primary }} />
           <div className="songMeta">
             <h4>{currentSong.title}</h4>
             <p>{currentSong.artist}</p>
@@ -378,7 +354,7 @@ export default function MusicPlayer() {
           height: 56px;
           border: 0;
           border-radius: 50%;
-          background: radial-gradient(circle at 30% 30%, #2c2c54 0%, #1a1a2e 70%);
+          background: var(--panel-bg);
           box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
           cursor: pointer;
           display: grid;
@@ -395,8 +371,9 @@ export default function MusicPlayer() {
           position: absolute;
           inset: 8px;
           border-radius: 50%;
-          border: 2px solid #e94560;
+          border: 2px solid var(--accent-primary);
           opacity: 0.8;
+          transition: border-color 0.5s ease;
         }
 
         .floatingButton.spinning {
@@ -407,7 +384,8 @@ export default function MusicPlayer() {
           width: 14px;
           height: 14px;
           border-radius: 50%;
-          background: #e94560;
+          background: var(--accent-primary);
+          transition: background-color 0.5s ease;
         }
 
         .playerPopup {
@@ -416,16 +394,16 @@ export default function MusicPlayer() {
           bottom: 92px;
           z-index: 9998;
           width: 280px;
-          background: #1a1a2e;
+          background: var(--panel-bg);
           color: #ffffff;
-          border: 1px solid rgba(233, 69, 96, 0.4);
+          border: 1px solid var(--accent-primary);
           border-radius: 16px;
           padding: 16px;
           box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
           transform: translateY(12px) scale(0.96);
           opacity: 0;
           pointer-events: none;
-          transition: opacity 0.24s ease, transform 0.24s ease;
+          transition: opacity 0.24s ease, transform 0.24s ease, border-color 0.5s ease;
         }
 
         .playerPopup.open {
@@ -446,6 +424,7 @@ export default function MusicPlayer() {
           border-radius: 50%;
           flex: 0 0 auto;
           box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+          transition: background-color 0.5s ease;
         }
 
         .songMeta h4 {
@@ -471,9 +450,9 @@ export default function MusicPlayer() {
 
         .progressFill {
           height: 100%;
-          background: #e94560;
+          background: var(--accent-primary);
           border-radius: inherit;
-          transition: width 0.1s linear;
+          transition: width 0.1s linear, background-color 0.5s ease;
         }
 
         .timeRow {
@@ -486,7 +465,7 @@ export default function MusicPlayer() {
 
         .errorText {
           margin-top: 8px;
-          color: #ff9aa8;
+          color: var(--accent-primary);
           font-size: 0.72rem;
           word-break: break-word;
         }
@@ -501,7 +480,7 @@ export default function MusicPlayer() {
         .controls button {
           flex: 1;
           border: 1px solid rgba(255, 255, 255, 0.18);
-          background: #16213e;
+          background: transparent;
           color: #ffffff;
           border-radius: 10px;
           padding: 8px 6px;
@@ -510,17 +489,17 @@ export default function MusicPlayer() {
         }
 
         .controls button:hover {
-          border-color: #e94560;
-          background: #0f3460;
+          border-color: var(--accent-primary);
+          background: rgba(255,255,255,0.1);
         }
 
         .controls .playButton {
-          background: #e94560;
-          border-color: #e94560;
+          background: var(--accent-primary);
+          border-color: var(--accent-primary);
         }
 
         .controls .playButton:hover {
-          background: #d23854;
+          filter: brightness(1.2);
         }
 
         @keyframes spin {

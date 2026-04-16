@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata = {
-  title: "The Nocturne | Portfolio",
+  title: "The Ghost / The Grief | Portfolio",
   description: "Developer & Musician Portfolio",
 };
 
@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <div className="globalBg" />
         <Navbar />
         {children}
         <MusicPlayer />

@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <h2 className={`${styles.logo} ${orbitron.className}`}>THE NOCTURNE</h2>
+        <h2 className={`${styles.logo} ${orbitron.className}`}>THE GHOST / THE GRIEF</h2>
         <nav className={styles.nav}>
           <Link href="/">HOME</Link>
           <Link href="/developer">DEVELOPER</Link>
@@ -14,7 +14,7 @@ export default function Footer() {
           <Link href="#contact">CONTACT</Link>
         </nav>
         <p className={styles.copyright}>
-          © {new Date().getFullYear()} NOCTURNE MONOLITH. ALL RIGHTS RESERVED.
+          © {new Date().getFullYear()} THE GHOST / THE GRIEF. ALL RIGHTS RESERVED.
         </p>
       </div>
     </footer>

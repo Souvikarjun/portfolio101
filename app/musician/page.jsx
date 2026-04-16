@@ -21,8 +21,8 @@ export default function MusicianPage() {
             THE <br /> GALLERY
           </h1>
           <div className={styles.socials}>
-            <span>INSTAGRAM <strong>@nocturne.vsn</strong></span>
-            <span>FACEBOOK <strong>/nocturne</strong></span>
+            <span>INSTAGRAM <strong>@the.grief.vsn</strong></span>
+            <span>FACEBOOK <strong>/thegrief</strong></span>
           </div>
           <p className={styles.lead}>
             A curated stream of moments from the monolith. Electronic landscapes and technical intersections captured in high contrast.
@@ -33,6 +33,10 @@ export default function MusicianPage() {
           {galleryImages.map((src, i) => (
             <div key={i} className={styles.galleryItem} style={{ backgroundImage: `url(${src})` }}></div>
           ))}
+          <div className={styles.showcaseCell}>
+            <div className={styles.spinningStar}>✦</div>
+            <p>MORE<br/>INCOMING</p>
+          </div>
           <div className={styles.galleryItemPromo}>
             <h2>LIVE RITUALS</h2>
             <p>MONOLITH TOUR / AUG 2024</p>

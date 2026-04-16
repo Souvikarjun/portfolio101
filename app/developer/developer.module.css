@@ -92,9 +92,14 @@
   height: 250px;
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay;
-  background-color: #111;
   border-bottom: 1px solid var(--border-color);
+  filter: grayscale(100%) brightness(0.4);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.projectCard:hover .cardImageHolder {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.02);
 }
 
 .cardContent {
@@ -102,6 +107,12 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .cardContent {
+  transform: translateY(0);
 }
 
 .cardHeaderRow {
@@ -127,6 +138,14 @@
   color: #bbb;
   font-size: 1rem;
   max-width: 500px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.projectCard:hover .projectCopy {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cardFooter {
@@ -136,6 +155,14 @@
   margin-top: 1rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-color);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.projectCard:hover .cardFooter {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .projectTech {
