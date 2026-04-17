@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { orbitron, inter } from "@/components/fonts/font";
 import Contact from "@/components/Contact";
-import {animate,stagger} from "animejs";
+import {animate, stagger, onScroll} from "animejs";
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -41,32 +41,39 @@ export default function Home() {
       );
     }
 
-    // Intersection Observer for Hero Image Text
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animate(
-              entry.target,
-              {
-                translateY: [50, 0],
-                opacity: [0, 1],
-                duration: 1500,
-                ease: "outQuart",
-              }
-            );
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (imageTextRef.current) {
-      observer.observe(imageTextRef.current);
+    // Parallax scrolling for Hero Content behind the image section
+    if (heroRef.current && imageTextRef.current) {
+      animate(
+        heroRef.current,
+        {
+          translateY: [0, 150],
+          opacity: [1, 0.2],
+          ease: 'linear',
+          autoplay: onScroll({
+            target: imageTextRef.current.parentElement, // .heroImageSection
+            enter: 'top bottom',
+            leave: 'top top',
+          })
+        }
+      );
     }
 
-    return () => observer.disconnect();
+    // Parallax for Hero Image Text
+    if (imageTextRef.current && imageTextRef.current.parentElement) {
+      animate(
+        imageTextRef.current,
+        {
+          translateY: [150, -50],
+          opacity: [0.2, 1],
+          ease: 'linear',
+          autoplay: onScroll({
+            target: imageTextRef.current.parentElement,
+            enter: 'top bottom',
+            leave: 'top top',
+          })
+        }
+      );
+    }
   }, []);
 
   return (
@@ -123,7 +130,7 @@ export default function Home() {
         </div>
 
         <section className={styles.heroImageSection}>
-          <div className={styles.heroImageText} ref={imageTextRef} style={{ opacity: 0 }}>
+          <div className={styles.heroImageText} ref={imageTextRef}>
             <h2>
               SYNTHESIZING <br />
               LOGIC & <br />
@@ -131,9 +138,9 @@ export default function Home() {
             </h2>
           </div>
         </section>
-      </main>
 
-      <Contact />
+        <Contact />
+      </main>
     </div>
   );
 }
