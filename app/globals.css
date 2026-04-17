@@ -4,7 +4,8 @@
   --accent-light: #b9c1fb;
   --accent-primary: #a1aeff;
   --accent-secondary: #ffb176;
-  --panel-bg: rgba(22, 23, 27, 0.85); /* Slightly transparent to see background */
+  --panel-bg: rgba(22, 23, 27, 0.85);
+  /* Slightly transparent to see background */
   --border-color: #27282e;
 }
 
@@ -23,9 +24,27 @@ html {
   background-image: var(--global-bg, url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop'));
   background-size: cover;
   background-position: center;
-  opacity: 0.8;
+  opacity: 0.9;
   pointer-events: none;
-  transition: background-image 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.transitionOverlay {
+  position: fixed;
+  inset: 0;
+  background: #2b2b2b;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+html.is-changing .transitionOverlay {
+  opacity: 1;
+}
+
+html.is-changing .globalBg {
+  opacity: 0.9;
 }
 
 .globalBg::after {
@@ -46,7 +65,12 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.04em;
   font-weight: 800;

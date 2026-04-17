@@ -242,17 +242,29 @@ export default function MusicPlayer() {
   useEffect(() => {
     if (typeof document !== "undefined") {
       const s = songs[currentIndex];
-      if (s && s.colors) {
-        document.documentElement.style.setProperty("--accent-primary", s.colors.primary);
-        document.documentElement.style.setProperty("--accent-secondary", s.colors.secondary);
-        document.documentElement.style.setProperty("--accent-light", s.colors.light);
-      }
-      if (s && s.bgImage) {
-        document.documentElement.style.setProperty("--hero-bg", s.bgImage);
-      }
-      if (s && s.globalBgImage) {
-        document.documentElement.style.setProperty("--global-bg", s.globalBgImage);
-      }
+
+      // Trigger fade out
+      document.documentElement.classList.add('is-changing');
+
+      // Wait for fade out to complete before changing images
+      const timer = setTimeout(() => {
+        if (s && s.colors) {
+          document.documentElement.style.setProperty("--accent-primary", s.colors.primary);
+          document.documentElement.style.setProperty("--accent-secondary", s.colors.secondary);
+          document.documentElement.style.setProperty("--accent-light", s.colors.light);
+        }
+        if (s && s.bgImage) {
+          document.documentElement.style.setProperty("--hero-bg", s.bgImage);
+        }
+        if (s && s.globalBgImage) {
+          document.documentElement.style.setProperty("--global-bg", s.globalBgImage);
+        }
+
+        // Trigger fade in
+        document.documentElement.classList.remove('is-changing');
+      }, 500); // Matches the 0.5s CSS transition duration
+
+      return () => clearTimeout(timer);
     }
   }, [currentIndex]);
 

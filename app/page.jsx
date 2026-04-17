@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { orbitron, inter } from "@/components/fonts/font";
 import Contact from "@/components/Contact";
-import {animate, stagger, onScroll} from "animejs";
+import { animate, stagger, onScroll } from "animejs";
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -58,13 +58,13 @@ export default function Home() {
       );
     }
 
-    // Parallax for Hero Image Text
+    // Parallax for Hero Image Text and Cards
     if (imageTextRef.current && imageTextRef.current.parentElement) {
       animate(
         imageTextRef.current,
         {
           translateY: [150, -50],
-          opacity: [0.2, 1],
+          opacity: [0.6, 1],
           ease: 'linear',
           autoplay: onScroll({
             target: imageTextRef.current.parentElement,
@@ -81,16 +81,16 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.heroWrapper}>
           <div className={styles.heroContent} ref={heroRef}>
-            <p className={`${styles.kicker} ${orbitron.className}`} style={{ opacity: 0 }}>
+            <p className={`${styles.kicker} ${orbitron.className}`} style={{ opacity: 1 }}>
               PORTFOLIO VOL. 01
             </p>
-            <h1 className={styles.title} style={{ opacity: 0 }}>
+            <h1 className={styles.title} style={{ opacity: 1 }}>
               DEVELOPER <br />
-              <span className={styles.ampersand}>&</span><br />
+              <span className={styles.ampersand} style={{ opacity: 1 }}>&</span><br />
               <span className={styles.musician}>MUSICIAN</span>
             </h1>
 
-            <p className={styles.subtitle} style={{ opacity: 0 }}>
+            <p className={styles.subtitle} style={{ opacity: 1 }}>
               Architecting digital ecosystems with technical precision while exploring
               the rhythmic boundaries of cinematic soundscapes. A dualistic approach to
               creative engineering.
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           <div className={styles.infoCards} ref={cardsRef}>
-            <div className={styles.card} style={{ opacity: 0 }}>
+            <div className={styles.card} style={{ opacity: 0.9 }}>
               <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
               <ul className={styles.stackList}>
                 <li>Rust / TypeScript</li>
@@ -116,7 +116,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className={styles.card} style={{ opacity: 0 }}>
+            <div className={styles.card} style={{ opacity: 0.9 }}>
               <p className={`${styles.cardLabel} ${orbitron.className}`}>LATEST RELEASE</p>
               <div className={styles.release}>
                 <div className={styles.waveform}>||||||||||||||||||</div>
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
 
         <section className={styles.heroImageSection}>
-          <div className={styles.heroImageText} ref={imageTextRef}>
+          <div className={styles.heroImageText} ref={imageTextRef} style={{ opacity: 1 }}>
             <h2>
               SYNTHESIZING <br />
               LOGIC & <br />
