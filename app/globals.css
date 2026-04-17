@@ -19,12 +19,13 @@ html {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  /* Using a dark atmospheric anime/sci-fi visual as a placeholder */
-  background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop');
+  /* Dynamically updated by MusicPlayer */
+  background-image: var(--global-bg, url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop'));
   background-size: cover;
   background-position: center;
   opacity: 0.8;
   pointer-events: none;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .globalBg::after {

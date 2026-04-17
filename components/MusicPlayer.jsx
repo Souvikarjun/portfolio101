@@ -11,6 +11,8 @@ const songs = [
     artist: "C418",
     src: "/music/01-subwoofer-lullaby.mp3",
     colors: { primary: "#a1aeff", secondary: "#ffb176", light: "#b9c1fb" },
+    bgImage: "url('/images/anime_bg_1.png')",
+    globalBgImage: "url('/images/anime_scenery_1.png')",
   },
   {
     id: 2,
@@ -18,6 +20,8 @@ const songs = [
     artist: "C418",
     src: "/music/02-living-mice.mp3",
     colors: { primary: "#e94560", secondary: "#ff9aa8", light: "#ffb176" },
+    bgImage: "url('/images/anime_bg_2.png')",
+    globalBgImage: "url('/images/anime_scenery_2.png')",
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ const songs = [
     artist: "C418",
     src: "/music/03-clark.mp3",
     colors: { primary: "#31a2ac", secondary: "#6df0ff", light: "#a3f3ff" },
+    bgImage: "url('/images/anime_bg_3.png')",
+    globalBgImage: "url('/images/anime_scenery_3.png')",
   },
   {
     id: 4,
@@ -32,6 +38,8 @@ const songs = [
     artist: "C418",
     src: "/music/05-oxygene.mp3",
     colors: { primary: "#ff7f50", secondary: "#ffd676", light: "#ffcbbb" },
+    bgImage: "url('/images/anime_bg_4.png')",
+    globalBgImage: "url('/images/anime_scenery_4.png')",
   },
   {
     id: 5,
@@ -39,6 +47,8 @@ const songs = [
     artist: "C418",
     src: "/music/06-wet-hands.mp3",
     colors: { primary: "#7d53de", secondary: "#b088ff", light: "#cbb3ff" },
+    bgImage: "url('/images/anime_bg_5.png')",
+    globalBgImage: "url('/images/anime_scenery_5.png')",
   },
 ];
 
@@ -236,6 +246,12 @@ export default function MusicPlayer() {
         document.documentElement.style.setProperty("--accent-primary", s.colors.primary);
         document.documentElement.style.setProperty("--accent-secondary", s.colors.secondary);
         document.documentElement.style.setProperty("--accent-light", s.colors.light);
+      }
+      if (s && s.bgImage) {
+        document.documentElement.style.setProperty("--hero-bg", s.bgImage);
+      }
+      if (s && s.globalBgImage) {
+        document.documentElement.style.setProperty("--global-bg", s.globalBgImage);
       }
     }
   }, [currentIndex]);
