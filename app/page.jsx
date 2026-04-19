@@ -85,46 +85,23 @@ export default function Home() {
               PORTFOLIO VOL. 01
             </p>
             <h1 className={styles.title} style={{ opacity: 1 }}>
-              DEVELOPER <br />
-              <span className={styles.ampersand} style={{ opacity: 1 }}>&</span><br />
-              <span className={styles.musician}>MUSICIAN</span>
+              THIS IS <br />
+              <span className={styles.nameHighlight}>SOUVIKARJUN DEB,</span><br />
+              <span className={styles.subTitleText}>DEVELOPER <span className={styles.ampersand}>&</span> <span className={styles.musician}>MUSICIAN</span></span>
             </h1>
 
             <p className={styles.subtitle} style={{ opacity: 1 }}>
               Architecting digital ecosystems with technical precision while exploring
-              the rhythmic boundaries of cinematic soundscapes. A dualistic approach to
-              creative engineering.
+              the rhythmic boundaries of cinematic soundscapes.
             </p>
 
-            <div className={styles.ctaGroup} style={{ opacity: 0 }}>
+            <div className={styles.ctaGroup} style={{ opacity: 1 }}>
               <Link href="/developer" className={styles.ctaPrimary}>
-                VIEW DEVELOPER WORK ↗
+                DEV WORK ↗
               </Link>
               <Link href="/musician" className={styles.ctaSecondary}>
-                EXPLORE MUSIC ▶
+                MUSIC ▶
               </Link>
-            </div>
-          </div>
-
-          <div className={styles.infoCards} ref={cardsRef}>
-            <div className={styles.card} style={{ opacity: 0.9 }}>
-              <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
-              <ul className={styles.stackList}>
-                <li>Rust / TypeScript</li>
-                <li>Distributed Systems</li>
-                <li>Low-latency Architecture</li>
-              </ul>
-            </div>
-
-            <div className={styles.card} style={{ opacity: 0.9 }}>
-              <p className={`${styles.cardLabel} ${orbitron.className}`}>LATEST RELEASE</p>
-              <div className={styles.release}>
-                <div className={styles.waveform}>||||||||||||||||||</div>
-                <div>
-                  <h4>VOID_STRUCTURE</h4>
-                  <p>AMBIENT / INDUSTRIAL</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -136,6 +113,28 @@ export default function Home() {
               LOGIC & <br />
               FREQUENCY.
             </h2>
+
+            <div className={`${styles.infoCards} ${styles.onImage}`} ref={cardsRef}>
+              <div className={styles.card}>
+                <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
+                <ul className={styles.stackList}>
+                  <li>Rust / TypeScript</li>
+                  <li>Distributed Systems</li>
+                  <li>Low-latency Architecture</li>
+                </ul>
+              </div>
+
+              <div className={styles.card}>
+                <p className={`${styles.cardLabel} ${orbitron.className}`}>LATEST RELEASE</p>
+                <div className={styles.release}>
+                  <div className={styles.waveform}>||||||||||||||||||</div>
+                  <div>
+                    <h4>VOID_STRUCTURE</h4>
+                    <p>AMBIENT / INDUSTRIAL</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

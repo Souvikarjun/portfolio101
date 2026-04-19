@@ -60,6 +60,19 @@
   text-shadow: none;
 }
 
+.nameHighlight {
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+
+.subTitleText {
+  font-size: 0.4em;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  display: block;
+  margin-top: 1rem;
+}
+
 .ampersand {
   color: var(--accent-primary) !important;
   font-size: clamp(3rem, 7vw, 5rem);
@@ -127,6 +140,15 @@
   background-color: var(--panel-bg);
   padding: 2rem;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.onImage .card {
+  background-color: rgba(15, 16, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .cardLabel {

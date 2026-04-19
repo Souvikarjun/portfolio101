@@ -100,7 +100,7 @@ export default function MusicPlayer() {
 
     const audio = new Audio();
     audio.preload = "metadata";
-    audio.loop = true;
+    audio.loop = false;
     audioRef.current = audio;
 
     let savedState = null;
@@ -122,11 +122,21 @@ export default function MusicPlayer() {
       }
     }
 
-    const initialIndex = savedState
-      ? Math.min(Math.max(savedState.songIndex, 0), songs.length - 1)
-      : 0;
-    const initialTime = savedState ? Math.max(savedState.currentTime, 0) : 0;
+    // On refresh/load, we want a random song that's different from the last one played
+    const lastIndex = savedState ? savedState.songIndex : -1;
+    let initialIndex;
+    if (songs.length > 1) {
+      initialIndex = Math.floor(Math.random() * songs.length);
+      if (initialIndex === lastIndex) {
+        initialIndex = (initialIndex + 1) % songs.length;
+      }
+    } else {
+      initialIndex = 0;
+    }
+
+    const initialTime = 0;
     const shouldAutoplay = savedState ? savedState.isPlaying : true;
+
 
     activeIndexRef.current = initialIndex;
     skipNextIndexEffectRef.current = true;
@@ -184,6 +194,10 @@ export default function MusicPlayer() {
       setIsPlaying(false);
     };
 
+    const onEnded = () => {
+      setCurrentIndex((prev) => (prev + 1) % songs.length);
+    };
+
     const onBeforeUnload = () => {
       persistState();
     };
@@ -191,6 +205,7 @@ export default function MusicPlayer() {
     audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
     audio.addEventListener("error", onError);
+    audio.addEventListener("ended", onEnded);
 
     if (typeof window !== "undefined") {
       window.addEventListener("beforeunload", onBeforeUnload);
@@ -204,6 +219,7 @@ export default function MusicPlayer() {
       audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
       audio.removeEventListener("error", onError);
+      audio.removeEventListener("ended", onEnded);
 
       if (typeof window !== "undefined") {
         window.removeEventListener("beforeunload", onBeforeUnload);
