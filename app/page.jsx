@@ -85,7 +85,7 @@ export default function Home() {
               PORTFOLIO VOL. 01
             </p>
             <h1 className={styles.title} style={{ opacity: 1 }}>
-              THIS IS <br />
+              <span className={styles.this}>THIS IS</span> <br />
               <span className={styles.nameHighlight}>SOUVIKARJUN DEB,</span><br />
               <span className={styles.subTitleText}>DEVELOPER <span className={styles.ampersand}>&</span> <span className={styles.musician}>MUSICIAN</span></span>
             </h1>

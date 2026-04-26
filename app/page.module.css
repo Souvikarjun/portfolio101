@@ -30,7 +30,7 @@
 .kicker {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: #666;
+  color: #dadada;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -58,6 +58,14 @@
   -webkit-background-clip: unset;
   color: inherit;
   text-shadow: none;
+}
+
+.this {
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  letter-spacing: 0.1em;
+  opacity: 1;
+  display: block;
+  margin-top: 1rem;
 }
 
 .nameHighlight {
@@ -148,7 +156,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .cardLabel {
@@ -235,7 +243,7 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 4rem;
-  text-shadow: 0 10px 40px rgba(0,0,0,1), 0 2px 20px rgba(0,0,0,1), 0 0 100px rgba(0,0,0,0.5);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 1), 0 2px 20px rgba(0, 0, 0, 1), 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
 .heroImageText .infoCards {
@@ -263,6 +271,7 @@
     height: auto;
     min-height: 80vh;
   }
+
   .heroImageText {
     flex-direction: column;
     align-items: flex-start;
