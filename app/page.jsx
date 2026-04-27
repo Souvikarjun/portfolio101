@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { orbitron, inter } from "@/components/fonts/font";
+import { orbitron, inter, jetbrainsMono } from "@/components/fonts/font";
 import Contact from "@/components/Contact";
 import { animate, stagger, onScroll } from "animejs";
 
@@ -86,14 +86,9 @@ export default function Home() {
             </p>
             <h1 className={styles.title} style={{ opacity: 1 }}>
               <span className={styles.this}>THIS IS</span>
-              <span className={styles.nameHighlight}>SOUVIKARJUN DEB,</span>
+              <div className={`${styles.nameHighlight} ${jetbrainsMono.className}`}>SOUVIKARJUN DEB</div>
               <span className={styles.subTitleText}>DEVELOPER <span className={styles.ampersand}>&</span> <span className={styles.musician}>MUSICIAN</span></span>
             </h1>
-
-            <p className={styles.subtitle} style={{ opacity: 1 }}>
-              Architecting digital ecosystems with technical precision while exploring
-              the rhythmic boundaries of cinematic soundscapes.
-            </p>
 
             <div className={styles.ctaGroup} style={{ opacity: 1 }}>
               <Link href="/developer" className={styles.ctaPrimary}>
@@ -113,7 +108,6 @@ export default function Home() {
               LOGIC & <br />
               FREQUENCY.
             </h2>
-
             <div className={`${styles.infoCards} ${styles.onImage}`} ref={cardsRef}>
               <div className={styles.card}>
                 <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
