@@ -1,0 +1,46 @@
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 120px;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4rem 8rem 4rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0 2rem 4rem 2rem;
+  }
+}

@@ -32,7 +32,7 @@ export default function Navbar() {
         <Link href="/" className={styles.navLink} style={{ opacity: 0 }}>HOME</Link>
         <Link href="/developer" className={styles.navLink} style={{ opacity: 0 }}>DEVELOPER</Link>
         <Link href="/musician" className={styles.navLink} style={{ opacity: 0 }}>MUSIC</Link>
-        <button className={styles.contactBtn} style={{ opacity: 0 }}>CONTACT</button>
+        <Link href="/contact" className={styles.contactBtn} style={{ opacity: 0 }}>CONTACT</Link>
       </div>
     </nav>
   );

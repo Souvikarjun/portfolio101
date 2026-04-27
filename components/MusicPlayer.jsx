@@ -99,7 +99,7 @@ export default function MusicPlayer() {
     if (audioRef.current) return;
 
     const audio = new Audio();
-    audio.preload = "metadata";
+    audio.preload = "auto";
     audio.loop = false;
     audioRef.current = audio;
 
@@ -135,7 +135,7 @@ export default function MusicPlayer() {
     }
 
     const initialTime = 0;
-    const shouldAutoplay = savedState ? savedState.isPlaying : true;
+    const shouldAutoplay = true;
 
 
     activeIndexRef.current = initialIndex;
