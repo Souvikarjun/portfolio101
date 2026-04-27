@@ -203,9 +203,9 @@
 
 .infoCards {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  max-width: 400px;
+  max-width: 850px;
   margin-bottom: 6rem;
 }
 
@@ -221,7 +221,7 @@
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 
+  box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease;

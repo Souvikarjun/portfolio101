@@ -63,6 +63,56 @@ body {
   color: var(--foreground);
   overflow-x: hidden;
   line-height: 1.6;
+  cursor: none;
+  /* Hide default cursor */
+}
+
+/* Ensure links and buttons also hide cursor */
+a,
+button,
+[role="button"] {
+  cursor: none;
+}
+
+.custom-cursor-wrapper {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  color: var(--accent-primary);
+  transition: transform 0.15s ease-out, color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-wrapper.pointer {
+  color: var(--accent-secondary);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.custom-cursor-wrapper.active {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.cursor-svg {
+  filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+.custom-cursor-wrapper.pointer .cursor-svg {
+  filter: drop-shadow(0 0 6px var(--accent-secondary));
+}
+
+.inner-circle {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 h1,
