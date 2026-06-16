@@ -52,7 +52,7 @@ export default function Home() {
           autoplay: onScroll({
             target: imageTextRef.current.parentElement, // .heroImageSection
             enter: 'top bottom',
-            leave: 'top top',
+            leave: 'top -200vh',
           })
         }
       );
@@ -69,7 +69,7 @@ export default function Home() {
           autoplay: onScroll({
             target: imageTextRef.current.parentElement,
             enter: 'top bottom',
-            leave: 'top top',
+            leave: 'top -200vh',
           })
         }
       );
