@@ -1,12 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Contact.module.css";
 import { orbitron } from "./fonts/font";
 import {animate,stagger} from "animejs";
 
 export default function Contact() {
   const contactRef = useRef(null);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted", { name, email, message });
+    e.target.reset();
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,10 +63,10 @@ export default function Contact() {
 
           <h3 className={`${styles.kicker} ${styles.kickerGray} ${orbitron.className} animate-me`} style={{ opacity: 0 }}>DIRECT CHANNELS</h3>
           <ul className={`${styles.links} animate-me`} style={{ opacity: 0 }}>
-            <li><a href="#">INSTAGRAM</a></li>
-            <li><a href="#">FACEBOOK</a></li>
-            <li><a href="#">GITHUB</a></li>
-            <li><a href="#">SPOTIFY</a></li>
+            <li><a href="https://www.instagram.com/souvikarjun_deb/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></li>
+            <li><a href="https://www.facebook.com/souvikarjundeb/" target="_blank" rel="noopener noreferrer">FACEBOOK</a></li>
+            <li><a href="https://github.com/Souvikarjun" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+            <li><a href="https://open.spotify.com/user/312begnezjkv3nge2hccnsguesom?si=e5bf09f7e5bb40b2" target="_blank" rel="noopener noreferrer">SPOTIFY</a></li>
           </ul>
         </div>
 
@@ -64,32 +74,31 @@ export default function Contact() {
           <div className={`${styles.specsBox} animate-me`} style={{ opacity: 0 }}>
             <h4 className={styles.specsTitle}>Technical Specs</h4>
             <p>
-              For code-related inquiries, please specify the stack. I prefer working with TypeScript,
-              Rust, and modern UI architectures.
+              For Music-related inquiries, please specify the genre or style you're interested in.
             </p>
           </div>
 
-          <form className={styles.form}>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <fieldset className={`${styles.fieldset} animate-me`} style={{ opacity: 0 }}>
               <legend className={`${styles.legend} ${orbitron.className}`}>IDENTIFY YOURSELF</legend>
-              <input type="text" placeholder="FULL NAME" className={styles.input} />
+              <input name="name" type="text" placeholder="NAME" className={styles.input} onChange={(e) => setName(e.target.value)} />
             </fieldset>
 
             <fieldset className={`${styles.fieldset} animate-me`} style={{ opacity: 0 }}>
               <legend className={`${styles.legend} ${orbitron.className}`}>DIGITAL ADDRESS</legend>
-              <input type="email" placeholder="EMAIL ADDRESS" className={styles.input} />
+              <input name="email" type="email" placeholder="EMAIL ADDRESS" className={styles.input} onChange={(e) => setEmail(e.target.value)} />
             </fieldset>
 
             <fieldset className={`${styles.fieldset} animate-me`} style={{ opacity: 0 }}>
               <legend className={`${styles.legend} ${orbitron.className}`}>THE NARRATIVE</legend>
-              <textarea placeholder="TELL ME ABOUT YOUR VISION" className={styles.textarea}></textarea>
+              <textarea name="message" placeholder="TELL ME ABOUT YOUR VISION" className={styles.textarea} onChange={(e) => setMessage(e.target.value)}></textarea>
             </fieldset>
 
             <div className={`${styles.submitRow} animate-me`} style={{ opacity: 0 }}>
               <button type="submit" className={styles.submitBtn}>
                 SEND <br /> SIGNAL
               </button>
-              <div className={styles.meta}>EST. RESPONSE 24H</div>
+              <div className={styles.meta}>EST. RESPONSE 2 DAYS</div>
             </div>
           </form>
         </div>

@@ -11,8 +11,15 @@ export default function CustomCursor() {
     const onMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
       const target = e.target;
+      if (!(target instanceof Element)) {
+        setIsPointer(false);
+        return;
+      }
+
       const computedCursor = window.getComputedStyle(target).cursor;
-      setIsPointer(computedCursor === "pointer" || target.tagName === "A" || target.tagName === "BUTTON");
+      setIsPointer(
+        computedCursor === "pointer" || target.closest("a, button") !== null
+      );
     };
 
     const onMouseDown = () => setIsMouseDown(true);

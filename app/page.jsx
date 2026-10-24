@@ -104,7 +104,7 @@ export default function Home() {
         <section className={styles.heroImageSection}>
           <div className={styles.heroImageText} ref={imageTextRef} style={{ opacity: 1 }}>
             <h2>
-              SYNTHESIZING <br />
+              INTEGRATING <br />
               LOGIC & <br />
               FREQUENCY.
             </h2>
@@ -112,9 +112,9 @@ export default function Home() {
               <div className={styles.card}>
                 <p className={`${styles.cardLabel} ${orbitron.className}`}>CURRENT STACK</p>
                 <ul className={styles.stackList}>
-                  <li>Rust / TypeScript</li>
-                  <li>Distributed Systems</li>
-                  <li>Low-latency Architecture</li>
+                  <li>Software Engineering</li>
+                  <li>Quantum Imaging</li>
+                  <li>Post Quantum Cryptography</li>
                 </ul>
               </div>
 
@@ -123,7 +123,7 @@ export default function Home() {
                 <div className={styles.release}>
                   <div className={styles.waveform}>||||||||||||||||||</div>
                   <div>
-                    <h4>VOID_STRUCTURE</h4>
+                    <h4>// TO BE FILLED</h4>
                     <p>AMBIENT / INDUSTRIAL</p>
                   </div>
                 </div>

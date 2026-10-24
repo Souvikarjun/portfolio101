@@ -311,7 +311,9 @@
 }
 
 .heroImageText {
-  position: relative;
+  position: absolute;
+  top: 15%;
+  left: 20%;
   z-index: 10;
   max-width: 1200px;
   margin: 0 auto;
