@@ -18,41 +18,28 @@ export default function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setSubmitStatus({
-        type: "error",
-        message: "The contact form is not configured yet. Please try again later.",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service_id: serviceId,
-          template_id: templateId,
-          user_id: publicKey,
-          template_params: { name, email, reply_to: email, message },
-        }),
+        body: JSON.stringify({ name, email, message }),
       });
 
       if (!response.ok) {
-        const error = await response.text();
-        throw new Error(error || "EmailJS could not send the message.");
+        const result = await response.json();
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "The message could not be saved.",
+        });
+        return;
       }
 
       setSubmitStatus({
         type: "success",
-        message: "Your message has been sent. Thank you for reaching out!",
+        message: "Your message has been saved. Thank you for reaching out!",
       });
       setName("");
       setEmail("");
@@ -146,7 +133,7 @@ export default function Contact() {
 
             <div className={`${styles.submitRow} animate-me`} style={{ opacity: 0 }}>
               <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                {isSubmitting ? "SENDING..." : <>SEND <br /> SIGNAL</>}
+                {isSubmitting ? "SAVING..." : <>SEND <br /> SIGNAL</>}
               </button>
               <div className={styles.meta}>EST. RESPONSE 2 DAYS</div>
             </div>

@@ -68,7 +68,7 @@
 .title span {
   display: inline-block;
   background: none;
-  -webkit-background-clip: unset;
+  /* -webkit-background-clip: unset; */
   color: inherit;
   text-shadow: none;
 }

@@ -4,6 +4,4 @@ welcome to my personal portfolio.
 
 ## Contact form
 
-The contact form sends messages through EmailJS. Copy `.env.example` to `.env.local` and set the service ID, template ID, and public key from your EmailJS account.
-
-Configure the EmailJS template to send to your inbox and use `{{name}}`, `{{email}}`, and `{{message}}` for the submitted fields. The sender address is also provided as `{{reply_to}}` so you can reply directly to the person who submitted the form. Restart the development server after changing environment variables.
+The contact form stores each submission (name, email, and message) in MongoDB. Copy `.env.example` to `.env.local` and set `MONGODB_URI` to your MongoDB connection string. The `contact_messages` collection is created automatically when the first message is submitted. Restart the development server after changing environment variables.
